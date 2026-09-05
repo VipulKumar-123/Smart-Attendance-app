@@ -1,11 +1,12 @@
 import ClassForm from './ClassForm'
-import Popup from '../../components/Layout/Popup'
+// import Popup from '../../components/Layout/Popup'
 import { useEffect, useReducer, useState } from 'react'
 import Button from '../../components/form/Button'
 import api from '../../api/config'
 import { Eye, PenSquare, Trash } from 'lucide-react'
 import { showToast } from '../../helper/toast-utility'
 import { formatDate } from '../../helper'
+import Modal from '../../components/popup/Modal'
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -170,18 +171,18 @@ const Class = () => {
       </div>
 
       {showPopup && (
-        <Popup onClose={setShowPopup}>
+        <Modal onClose={setShowPopup}>
           <ClassForm
             onClose={() => {
               setShowPopup(false)
             }}
             fetchClass={fetchClass}
           />
-        </Popup>
+        </Modal>
       )}
 
       {isClassPopup && state && (
-        <Popup onClose={setIsClassPopup}>
+        <Modal onClose={setIsClassPopup}>
 
           {state.contentType === "view" ? (
 
@@ -422,7 +423,7 @@ const Class = () => {
 
           )}
 
-        </Popup>
+        </Modal>
       )}
 
     </>

@@ -4,8 +4,9 @@ import api from '../../api/config';
 import { showToast } from '../../helper/toast-utility';
 import Button from '../../components/form/Button';
 import useMyLocation from '../../helper/useMyLocation';
-import Popup from '../../components/Layout/Popup';
+// import Popup from '../../components/Layout/Popup';
 import { Trash } from 'lucide-react';
+import Modal from '../../components/popup/Modal';
 
 const SingleClass = ({ onClose }) => {
 
@@ -151,7 +152,7 @@ const SingleClass = ({ onClose }) => {
 
 
       {showPopup &&
-        (<Popup onClose={setShowPopup}>
+        (<Modal onClose={setShowPopup}>
           <div className="px-5 text-amber-100">
             <h2>Student List</h2>
           </div>
@@ -193,7 +194,7 @@ const SingleClass = ({ onClose }) => {
               No students found
             </div>
           )}
-        </Popup>
+        </Modal>
         )}
 
     </div>

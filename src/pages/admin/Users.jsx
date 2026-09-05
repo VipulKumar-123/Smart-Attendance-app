@@ -1,11 +1,12 @@
 import { useEffect, useReducer, useState } from "react";
 import Button from "../../components/form/Button";
-import Popup from "../../components/Layout/Popup";
+// import Popup from "../../components/Layout/Popup";
 import UserForm from "../../components/form/UserForm";
 import api from "../../api/config";
 import { Eye, PenSquare, Trash } from "lucide-react";
 import { formatDate } from "../../helper";
 import { showToast } from "../../helper/toast-utility";
+import Modal from "../../components/popup/Modal";
 
 // reducer function has two parameters - state, action
 // state - it contains current state value.
@@ -149,13 +150,13 @@ const Users = () => {
       </div>
 
       {showPopup && (
-        <Popup onClose={setShowPopup}>
+        <Modal onClose={setShowPopup}>
           <UserForm onClose={setShowPopup} fetchUsers={fetchUsers} />
-        </Popup>
+        </Modal>
       )}
 
       {isUserPopup && (
-        <Popup onClose={setIsUserPopup}>
+        <Modal onClose={setIsUserPopup}>
           {state.contentType === "view" ? (
             <div className="p-5">
               <p className="text-sm text-gray-500">Created At</p>
@@ -192,7 +193,7 @@ const Users = () => {
               </div>
             </div>
           )}
-        </Popup>
+        </Modal>
       )}
     </div>
   );
