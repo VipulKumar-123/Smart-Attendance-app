@@ -1,5 +1,5 @@
 import ClassForm from './ClassForm'
-import Popup from '../../components/layout/Popup'
+import Popup from '../../components/Layout/Popup'
 import { useEffect, useReducer, useState } from 'react'
 import Button from '../../components/form/Button'
 import api from '../../api/config'
@@ -65,7 +65,7 @@ const Class = () => {
         <h2 className="text-xl font-semibold">
           Classes
         </h2>
-  
+
         <Button
           type="button"
           onClick={() => setShowPopup(true)}
@@ -186,7 +186,7 @@ const Class = () => {
           {state.contentType === "view" ? (
 
             <>
-             
+
               {/* Details */}
               <div className="p-6 space-y-5">
 

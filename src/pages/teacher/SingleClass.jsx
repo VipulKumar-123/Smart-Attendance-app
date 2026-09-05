@@ -4,7 +4,7 @@ import api from '../../api/config';
 import { showToast } from '../../helper/toast-utility';
 import Button from '../../components/form/Button';
 import useMyLocation from '../../helper/useMyLocation';
-import Popup from '../../components/layout/Popup';
+import Popup from '../../components/Layout/Popup';
 import { Trash } from 'lucide-react';
 
 const SingleClass = ({ onClose }) => {

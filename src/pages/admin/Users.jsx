@@ -1,6 +1,6 @@
 import { useEffect, useReducer, useState } from "react";
 import Button from "../../components/form/Button";
-import Popup from "../../components/layout/Popup";
+import Popup from "../../components/Layout/Popup";
 import UserForm from "../../components/form/UserForm";
 import api from "../../api/config";
 import { Eye, PenSquare, Trash } from "lucide-react";
