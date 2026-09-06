@@ -7,36 +7,32 @@ const MarkAttendance = () => {
   const { token } = useParams();
   const { attendanceStatus, setAttendanceStatus } = useState(null);
 
-
-  const getGeoalocation = () => {
-    if ("geolocation" in navigator) {
+  const getGeoLocation = () => {
+    return new Promise((resolve, reject) => {
+      if (!("geolocation" in navigator)) {
+        reject(new Error("Geolocation is not supported by this browser."));
+        return;
+      }
       navigator.geolocation.getCurrentPosition(
         (position) => {
-
-          return {
+          resolve({
             lat: position.coords.latitude,
-            lng: position.coords.longitude
-          }
+            lng: position.coords.longitude,
+          });
         },
         (error) => {
-          showToast(
-            "error",
-            `Error Code:${error.code},Message:${error.message}`,
-          )
-        }
+          reject(
+            new Error(`Error Code: ${error.code}, Message: ${error.message}`),
+          );
+        },
       );
-    } else {
-      showToast(
-        "error",
-        `Error Code:${error.code},Message:${error.message}`
-      )
-    }
+    });
   };
 
 
   const handleMarkAttendance = async () => {
     try {
-      const { lat, lng } = await getGeoalocation()
+      const { lat, lng } = await getGeoLocation()
       const requestBody = { token, lat, lng };
       const res = await api.post(`/attendance/scan`, requestBody);
       setAttendanceStatus(res.data)
