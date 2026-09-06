@@ -17,6 +17,7 @@ import MyAttendance from './pages/student/MyAttendance';
 import ProtectedRoute from './auth/ProtectedRoute';
 import Users from './pages/admin/Users';
 import SingleClass from './pages/teacher/SingleClass';
+import MarkAttendance from './pages/student/MarkAttendance';
 
 
 const AppRouter = () => {
@@ -46,7 +47,7 @@ const AppRouter = () => {
                 <Route index element={<TeacherDashboard />}></Route>
                 <Route path="/teacher/student" element={<Students />}></Route>
                 <Route path="/teacher/classes" element={<Classes />}></Route>
-                <Route path="/teacher/class/:classid" element={<SingleClass/>}></Route>
+                <Route path="/teacher/class/:classid" element={<SingleClass />}></Route>
             </Route>
 
 
@@ -57,9 +58,14 @@ const AppRouter = () => {
                 </ProtectedRoute>
             }>
                 <Route index element={<StudentDashboard />}></Route>
-                <Route path="/student/mark" element={<MyAttendance />}></Route>
+                <Route path="/student/mark" element={<MarkAttendance />}></Route>
                 <Route path="/student/my-attendance" element={<MyAttendance />}></Route>
             </Route>
+            <Route path="/attend/:token"
+                element={<ProtectedRoute role="student">
+                    <MarkAttendance />
+                </ProtectedRoute>
+                }></Route>
             <Route path="*" element={<PageNotFound />}></Route>
 
         </Routes>
