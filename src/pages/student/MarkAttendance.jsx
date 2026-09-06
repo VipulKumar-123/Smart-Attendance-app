@@ -36,7 +36,7 @@ const MarkAttendance = () => {
 
   const handleMarkAttendance = async () => {
     try {
-      const { lat, lng } = getGeoalocation()
+      const { lat, lng } = await getGeoalocation()
       const requestBody = { token, lat, lng };
       const res = await api.post(`/attendance/scan`, requestBody);
       setAttendanceStatus(res.data)
@@ -62,7 +62,7 @@ const MarkAttendance = () => {
         ) : (
           <p>Please open your camera and scan the code provided by teacher </p>
         )
-      }
+      };
     </>
   );
 };
