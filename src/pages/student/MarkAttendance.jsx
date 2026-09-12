@@ -5,7 +5,7 @@ import api from '../../api/config';
 
 const MarkAttendance = () => {
   const { token } = useParams();
-  const { attendanceStatus, setAttendanceStatus } = useState(null);
+  const [attendanceStatus, setAttendanceStatus] = useState(null);
 
   const getGeoLocation = () => {
     return new Promise((resolve, reject) => {
@@ -58,7 +58,7 @@ const MarkAttendance = () => {
         ) : (
           <p>Please open your camera and scan the code provided by teacher </p>
         )
-      };
+      }
     </>
   );
 };
