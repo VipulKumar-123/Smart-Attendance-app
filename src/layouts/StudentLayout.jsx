@@ -7,7 +7,7 @@ const StudentLayout = () => {
   const StudentRouter = [
     { url: "/student", linkText: "Dashboard", icon: "gauge" },
     { url: "/student/mark", linkText: "Mark Attendence", icon: "list-todo" },
-    { url: "/student/my-attendence", linkText: "my Attendence", icon: "user-check" },
+    { url: "/student/my-attendance", linkText: "my Attendance", icon: "user-check" },
 
   ]
 
